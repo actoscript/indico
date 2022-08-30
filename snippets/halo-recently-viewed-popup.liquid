@@ -15,8 +15,75 @@
     endif
     assign btn_top = settings.show_recently_viewed_top
 -%}
+{% if settings.show_offer_popup %}
+        <style>
+            .ofr_pop_bx{
+                position: fixed;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                background-color: #00000040;
+                backdrop-filter: blur(4px);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                z-index: 999;
+            }
+            .ofr_pop{
+                padding: 12px 36px;
+                max-width: 50%;
+                border-radius: 6px;
+            }
+            .ofr_pop .ofr {
+                background-color: white;
+                padding: 12px 36px;
+                margin-bottom: 10px;
+                border-radius: 6px;
+            }
+        </style>
+        <div class="ofr_pop_bx" id="as-offer-bar">
+            <div class="ofr_pop">
+                {% if settings.ofr_1 != blank %}
+                    <div class="ofr row">
+                        <div class="col-9">
+                            <p>{{settings.ofr_1}}</p>
+                        </div>
+                        <div class="col-3">
+
+                        </div>
+                    </div>
+                {% endif %}
+                {% if settings.ofr_2 != blank %}
+                    <div class="ofr">
+                        <p>{{settings.ofr_2}}</p>
+                    </div>
+                {% endif %}
+                {% if settings.ofr_3 != blank %}
+                    <div class="ofr">
+                        <p>{{settings.ofr_3}}</p>
+                    </div>
+                {% endif %}
+                {% if settings.ofr_4 != blank %}
+                    <div class="ofr">
+                        <p>{{settings.ofr_4}}</p>
+                    </div>
+                {% endif %}
+                {% if settings.ofr_5 != blank %}
+                    <div class="ofr">
+                        <p>{{settings.ofr_5}}</p>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+        <script>
+            $('#ofr_btn_pop').click(function(){
+                
+            });
+        </script>
+    {% endif %}
 <recently-viewed-popup class="halo-popup halo-recently-viewed-popup" id="halo-recently-viewed-popup" data-product-to-show="{{ limit }}" data-expire-day="{{ expire_day }}">
-    
+
     <div class="halo-recently-viewed recently-viewed-list recently-viewed-tab" id="halo-recently-viewed-list">
         <div class="recently-viewed-content">
             <div class="recently-header">
@@ -24,7 +91,7 @@
                     {{ 'recently_viewed.general.product_title' | t }}
                 </h3>
                 <a class="button__close" href="javascript:void(0)" title="Close">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+                    <svg viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
                         <path d="M 38.982422 6.9707031 A 2.0002 2.0002 0 0 0 37.585938 7.5859375 L 24 21.171875 L 10.414062 7.5859375 A 2.0002 2.0002 0 0 0 8.9785156 6.9804688 A 2.0002 2.0002 0 0 0 7.5859375 10.414062 L 21.171875 24 L 7.5859375 37.585938 A 2.0002 2.0002 0 1 0 10.414062 40.414062 L 24 26.828125 L 37.585938 40.414062 A 2.0002 2.0002 0 1 0 40.414062 37.585938 L 26.828125 24 L 40.414062 10.414062 A 2.0002 2.0002 0 0 0 38.982422 6.9707031 z"></path>
                     </svg>
                 </a>
@@ -39,6 +106,7 @@
             </div>
         </div>
     </div>
+    
     {%- if show_social_media -%}
         <div class="halo-recently-viewed recently-viewed-share recently-viewed-tab" id="halo-recently-viewed-share">
             <div class="recently-viewed-content">
@@ -47,7 +115,7 @@
                         {{ 'recently_viewed.general.share_title' | t }}
                     </h3>
                     <a class="button__close" href="javascript:void(0)" title="Close">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+                        <svg viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
                             <path d="M 38.982422 6.9707031 A 2.0002 2.0002 0 0 0 37.585938 7.5859375 L 24 21.171875 L 10.414062 7.5859375 A 2.0002 2.0002 0 0 0 8.9785156 6.9804688 A 2.0002 2.0002 0 0 0 7.5859375 10.414062 L 21.171875 24 L 7.5859375 37.585938 A 2.0002 2.0002 0 1 0 10.414062 40.414062 L 24 26.828125 L 37.585938 40.414062 A 2.0002 2.0002 0 1 0 40.414062 37.585938 L 26.828125 24 L 40.414062 10.414062 A 2.0002 2.0002 0 0 0 38.982422 6.9707031 z"></path>
                         </svg>
                     </a>
@@ -107,7 +175,7 @@
                             </li>
                         {%- endif -%}
                         {%- if settings.social_tumblr_link != blank -%}
-                          <li class="list-social__item">
+                            <li class="list-social__item">
                                 <a href="{{ settings.social_tumblr_link }}" class="link link--text list-social__link">
                                     {%- render 'icon-tumblr' -%}
                                     <span class="visually-hidden">{{ 'general.social.links.tumblr' | t }}</span>
@@ -135,7 +203,7 @@
                         {%- if settings.social_youtube_link != blank -%}
                             <li class="list-social__item">
                                 <a href="{{ settings.social_youtube_link }}" class="link link--text list-social__link">
-                                {%- render 'icon-youtube' -%}
+                                    {%- render 'icon-youtube' -%}
                                     <span class="visually-hidden">{{ 'general.social.links.youtube' | t }}</span>
                                 </a>
                                 <div class="info list-social__info text-left">
@@ -173,12 +241,12 @@
                         {%- endif -%}
                         {%- if settings.show_newsletter_popup -%}
                             <li class="list-social__item mail-newsletter">
-                                <a href="#" data-open-newsletter-popup class="link link--text list-social__link">
+                                <a class="link link--text list-social__link" data-open-newsletter-popup href="#">
                                     {% render 'icon-mail' %}
                                     <span class="visually-hidden">{{ 'recently_viewed.general.newsletter' | t }}</span>
                                 </a>
                                 <div class="info list-social__info text-left">
-                                    <a class="link link-underline" href="#" data-open-newsletter-popup> 
+                                    <a class="link link-underline" data-open-newsletter-popup href="#">
                                         <span class="text">{{ 'recently_viewed.general.newsletter' | t }}</span>
                                     </a>
                                 </div>
@@ -198,6 +266,11 @@
                 {% render 'icon-social-media' %}
             </div>
         {%- endif -%}
+        {% if settings.show_offer_popup %}
+            <div class="recently-viewed-icon" id="ofr_btn_pop">
+                {% render 'icon-offer' %}
+            </div>
+        {% endif %}
         {%- if settings.show_ask_an_expert and settings.ask_an_expert_show == 'all_page' -%}
             <div class="recently-viewed-icon open-popup recently-viewed-icon-ask-an-mb" data-open-ask-an-expert>
                 {% render 'icon-ask-an-expert' %}
@@ -208,6 +281,7 @@
                 {% render 'icon-back-to-top' %}
             </div>
         {%- endif -%}
+
     </div>
 </recently-viewed-popup>
 

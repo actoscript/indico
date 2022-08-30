@@ -1,11 +1,10 @@
-// =============================================================================
-// Ella Custom CSS - Customize The Style For Layout
-// =============================================================================
-
-// =============================================================================
-//
-// IMPORTANT DISCLAIMER
-// Shopify is notifying shop owners about the need to convert scss files to css files.
-// Please use only CSS to style the layout.
-//
-// =============================================================================
+.row{
+    display: flex;
+    flex-wrap: wrap;
+}
+.col-9{
+    width: 75%;
+}
+.col-3{
+    width: 25%;
+}

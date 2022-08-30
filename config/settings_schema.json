@@ -7033,6 +7033,57 @@
         "content": "t:settings_schema.recently_viewed.settings.header__1.content"
       },
       {
+        "type":"checkbox",
+        "id":"show_offer_popup",
+        "label":"Show offer Popup",
+        "default":true
+      },
+      {
+        "type":"header",
+        "content":"offer 1"
+      },
+      {
+        "type":"text",
+        "id":"ofr_1",
+        "label":"Enter Offer"
+      },
+      {
+        "type":"header",
+        "content":"offer 2"
+      },
+      {
+        "type":"text",
+        "id":"ofr_2",
+        "label":"Enter Offer"
+      },
+      {
+        "type":"header",
+        "content":"offer 3"
+      },
+      {
+        "type":"text",
+        "id":"ofr_3",
+        "label":"Enter Offer"
+      },
+      {
+        "type":"header",
+        "content":"offer 4"
+      },
+      {
+        "type":"text",
+        "id":"ofr_4",
+        "label":"Enter Offer"
+      },
+      {
+        "type":"header",
+        "content":"offer 5"
+      },
+      {
+        "type":"text",
+        "id":"ofr_5",
+        "label":"Enter Offer"
+      },
+      {
         "type": "checkbox",
         "id": "show_recently_viewed_popup",
         "label": "t:settings_schema.recently_viewed.settings.general.label__1",
